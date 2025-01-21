@@ -36,29 +36,46 @@ class GalleryItem extends StatelessWidget {
       onTap: () => showBottomSheet(
           context: context,
           builder: (BuildContext context) {
-            return SingleChildScrollView(
-              child: Column(children: [
-                Image(image: AssetImage(imagePath)),
-                Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Column(
-                    spacing: 10,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        imageTitle,
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      Text(
-                        imageDate,
-                        style: Theme.of(context).textTheme.labelLarge,
-                      ),
-                      Text(imageDescription)
-                    ],
-                  ),
-                )
-              ]),
-            );
+            return DraggableScrollableSheet(
+                initialChildSize: 1.0,
+                minChildSize: 1.0,
+                builder: (context, scrollController) {
+                  return SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          SizedBox(
+                            height: 400,
+                            child: Image(
+                              image: AssetImage(imagePath),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Column(
+                              spacing: 10,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  imageTitle,
+                                  style:
+                                      Theme.of(context).textTheme.headlineLarge,
+                                ),
+                                Text(
+                                  imageDate,
+                                  style: Theme.of(context).textTheme.labelLarge,
+                                ),
+                                Text(
+                                  imageDescription,
+                                  textAlign: TextAlign.justify,
+                                )
+                              ],
+                            ),
+                          )
+                        ]),
+                  );
+                });
           }),
     );
   }

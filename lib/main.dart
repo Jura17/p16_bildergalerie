@@ -12,6 +12,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: GalleryApp(),
     );
   }
@@ -19,6 +20,7 @@ class MainApp extends StatelessWidget {
 
 class GalleryApp extends StatefulWidget {
   const GalleryApp({super.key});
+  static Color backGroundColor = Color.fromARGB(255, 80, 175, 129);
 
   @override
   State<GalleryApp> createState() => _GalleryAppState();
@@ -31,13 +33,20 @@ class _GalleryAppState extends State<GalleryApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("MyGallery"),
+        title: Text(
+          "Fotogalerie Kaya Müller",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: GalleryApp.backGroundColor,
       ),
       body: [
         GalleryScreen(),
         AboutMeScreen(),
       ][activeIndex],
       bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Color.fromARGB(255, 48, 36, 73),
+          backgroundColor: GalleryApp.backGroundColor,
           currentIndex: activeIndex,
           onTap: (index) {
             setState(() {
