@@ -13,6 +13,15 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Color.fromARGB(255, 235, 246, 241)),
+        ),
+        primaryColor: Color.fromARGB(255, 47, 142, 237),
+        scaffoldBackgroundColor: Color.fromARGB(255, 207, 229, 250),
+        focusColor: Color.fromARGB(255, 235, 246, 241),
+        disabledColor: Color.fromARGB(255, 13, 67, 120),
+      ),
       home: GalleryApp(),
     );
   }
@@ -20,7 +29,6 @@ class MainApp extends StatelessWidget {
 
 class GalleryApp extends StatefulWidget {
   const GalleryApp({super.key});
-  static Color backGroundColor = Color.fromARGB(255, 80, 175, 129);
 
   @override
   State<GalleryApp> createState() => _GalleryAppState();
@@ -35,21 +43,25 @@ class _GalleryAppState extends State<GalleryApp> {
       appBar: AppBar(
         title: Text(
           "Fotogalerie Kaya Müller",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+              color: Theme.of(context).focusColor, fontWeight: FontWeight.bold),
         ),
-        backgroundColor: GalleryApp.backGroundColor,
+        backgroundColor: Theme.of(context).primaryColor,
       ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: [
         GalleryScreen(),
         AboutMeScreen(),
       ][activeIndex],
       bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.white,
-          unselectedItemColor: Color.fromARGB(255, 48, 36, 73),
-          backgroundColor: GalleryApp.backGroundColor,
+          selectedItemColor: Theme.of(context).focusColor,
+          unselectedItemColor: Theme.of(context).disabledColor,
+          backgroundColor: Theme.of(context).primaryColor,
           currentIndex: activeIndex,
           onTap: (index) {
             setState(() {
+              // stellt sicher, dass offene bottomSheets geschlossen werden, bevor wir zur anderen page wechseln
+              if (Navigator.of(context).canPop()) Navigator.pop(context);
               activeIndex = index;
             });
           },

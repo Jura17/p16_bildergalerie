@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:p16_bildergalerie/image_details_bottom_sheet.dart';
 
 class GalleryItem extends StatelessWidget {
   final String imageTitle;
@@ -15,68 +16,32 @@ class GalleryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Card(
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Image(
-                image: AssetImage(imagePath),
-                fit: BoxFit.cover,
+        child: Card(
+          clipBehavior: Clip.antiAliasWithSaveLayer,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Image(
+                  image: AssetImage(imagePath),
+                  fit: BoxFit.cover,
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Center(child: Text(imageTitle)),
-            )
-          ],
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(child: Text(imageTitle)),
+              )
+            ],
+          ),
         ),
-      ),
-      onTap: () => showBottomSheet(
-          context: context,
-          builder: (BuildContext context) {
-            return DraggableScrollableSheet(
-                initialChildSize: 1.0,
-                minChildSize: 1.0,
-                builder: (context, scrollController) {
-                  return SingleChildScrollView(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          SizedBox(
-                            height: 400,
-                            child: Image(
-                              image: AssetImage(imagePath),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Column(
-                              spacing: 10,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  imageTitle,
-                                  style:
-                                      Theme.of(context).textTheme.headlineLarge,
-                                ),
-                                Text(
-                                  imageDate,
-                                  style: Theme.of(context).textTheme.labelLarge,
-                                ),
-                                Text(
-                                  imageDescription,
-                                  textAlign: TextAlign.justify,
-                                )
-                              ],
-                            ),
-                          )
-                        ]),
-                  );
-                });
-          }),
-    );
+        onTap: () => showBottomSheet(
+            context: context,
+            builder: (BuildContext context) {
+              return ImageDetailsBottomSheet(
+                  imagePath: imagePath,
+                  imageTitle: imageTitle,
+                  imageDate: imageDate,
+                  imageDescription: imageDescription);
+            }));
   }
 }
