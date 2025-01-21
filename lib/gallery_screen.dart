@@ -6,8 +6,7 @@ class GalleryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GridView.count(
         crossAxisCount: 2,
@@ -17,6 +16,6 @@ class GalleryScreen extends StatelessWidget {
           for (int i = 0; i < galleryData.length; i++) galleryData[i],
         ],
       ),
-    ));
+    );
   }
 }

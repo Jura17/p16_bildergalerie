@@ -16,8 +16,11 @@ class GalleryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        child: Card(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
+      child: Card(
+        elevation: 2,
+        clipBehavior: Clip.antiAlias,
+        child: Container(
+          color: Theme.of(context).highlightColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
@@ -34,14 +37,16 @@ class GalleryItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () => showBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return ImageDetailsBottomSheet(
-                  imagePath: imagePath,
-                  imageTitle: imageTitle,
-                  imageDate: imageDate,
-                  imageDescription: imageDescription);
-            }));
+      ),
+      onTap: () => showBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return ImageDetailsBottomSheet(
+                imagePath: imagePath,
+                imageTitle: imageTitle,
+                imageDate: imageDate,
+                imageDescription: imageDescription);
+          }),
+    );
   }
 }
