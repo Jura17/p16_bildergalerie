@@ -14,23 +14,52 @@ class GalleryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAliasWithSaveLayer,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Expanded(
-            child: Image(
-              image: AssetImage(imagePath),
-              fit: BoxFit.cover,
+    return GestureDetector(
+      child: Card(
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: Image(
+                image: AssetImage(imagePath),
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Center(child: Text(imageTitle)),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Center(child: Text(imageTitle)),
+            )
+          ],
+        ),
       ),
+      onTap: () => showBottomSheet(
+          context: context,
+          builder: (BuildContext context) {
+            return SingleChildScrollView(
+              child: Column(children: [
+                Image(image: AssetImage(imagePath)),
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    spacing: 10,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        imageTitle,
+                        style: Theme.of(context).textTheme.headlineLarge,
+                      ),
+                      Text(
+                        imageDate,
+                        style: Theme.of(context).textTheme.labelLarge,
+                      ),
+                      Text(imageDescription)
+                    ],
+                  ),
+                )
+              ]),
+            );
+          }),
     );
   }
 }
