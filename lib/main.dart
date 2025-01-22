@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:p16_bildergalerie/gallery_theme.dart';
 import 'package:p16_bildergalerie/gallery_app.dart';
 
 void main() {
@@ -15,11 +16,13 @@ class MainApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           iconTheme: IconThemeData(color: Color.fromARGB(255, 241, 249, 255)),
+          backgroundColor: GalleryColors.primaryColor,
+          titleTextStyle: GalleryTextStyles.appBarTitleStyle,
         ),
-        primaryColor: Color.fromARGB(255, 47, 142, 237),
-        highlightColor: Color.fromARGB(255, 241, 249, 255),
-        scaffoldBackgroundColor: Color.fromARGB(255, 217, 237, 254),
-        disabledColor: Color.fromARGB(255, 13, 67, 120),
+        primaryColor: GalleryColors.primaryColor,
+        highlightColor: GalleryColors.highlightColor,
+        scaffoldBackgroundColor: GalleryColors.scaffoldBGColor,
+        disabledColor: GalleryColors.disabledColor,
       ),
       home: GalleryApp(),
     );

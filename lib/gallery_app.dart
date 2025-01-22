@@ -15,16 +15,7 @@ class _GalleryAppState extends State<GalleryApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Fotogalerie Kaya Müller",
-          style: TextStyle(
-              color: Theme.of(context).highlightColor,
-              fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-      ),
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(title: Text("Fotogalerie Kaya Müller")),
       body: [
         GalleryScreen(),
         AboutMeScreen(),
