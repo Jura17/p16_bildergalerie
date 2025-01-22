@@ -17,17 +17,7 @@ class ImageDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
-        iconTheme: IconThemeData(color: Color.fromARGB(255, 241, 249, 255)),
-        title: Text(
-          "Details",
-          style: TextStyle(
-              color: Theme.of(context).highlightColor,
-              fontWeight: FontWeight.bold),
-        ),
-      ),
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      appBar: AppBar(title: Text("Details")),
       body: SafeArea(
         child: SingleChildScrollView(
           child:

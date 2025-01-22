@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:p16_bildergalerie/image_details_bottom_sheet.dart';
-// import 'package:p16_bildergalerie/image_details_screen.dart';
+import 'package:p16_bildergalerie/image_details_screen.dart';
 
 class GalleryItem extends StatelessWidget {
   final String imageTitle;
@@ -49,7 +49,7 @@ class GalleryItem extends StatelessWidget {
                 imageDescription: imageDescription);
           }),
       // onTap: () => Navigator.of(context).push(MaterialPageRoute(
-      //     builder: (context) => ImageDetailsBottomScreen(
+      //     builder: (context) => ImageDetailsScreen(
       //         imagePath: imagePath,
       //         imageTitle: imageTitle,
       //         imageDate: imageDate,
